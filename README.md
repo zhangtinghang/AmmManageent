@@ -1,44 +1,66 @@
-# vueAdmin-template
+# 基于VUE的后台管理系统
 
-> A minimal vue admin template with Element UI & axios & iconfont & permission control & lint
+> 这是一个简单的管理后台系统，内部使用，使用vue-element-templete模版改造。
 
-**Live demo:** http://panjiachen.github.io/vueAdmin-template
+项目模版：
+[vue-element-templete](https://github.com/PanJiaChen/vue-admin-template)
 
-[中文文档](https://github.com/PanJiaChen/vueAdmin-template/blob/master/README-zh.md)
+模块参考：
+[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
 
-## Build Setup
+## 相关项目
+[服务器地址(node.js)](https://github.com/zhangtinghang/AmmAdmin)
 
-``` bash
+[前端展示地址](https://github.com/zhangtinghang/Amm)
 
-# Clone project
-git clone https://github.com/PanJiaChen/vueAdmin-template.git
+## 开发
 
-# Install dependencies
+```bash
+# 克隆项目
+git clone git@github.com:zhangtinghang/AmmManageent.git
+
+# 安装依赖
 npm install
 
-# serve with hot reload at localhost:9528
+# 建议不要用cnpm安装 会有各种诡异的bug 可以通过如下操作解决 npm 下载速度慢的问题
+npm install --registry=https://registry.npm.taobao.org
+
+# 启动服务
 npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-## Demo
-![demo](https://github.com/PanJiaChen/PanJiaChen.github.io/blob/master/images/demo.gif)
+浏览器访问 http://localhost:9527
 
-## Extra
-If you want router permission && generate menu by user roles , you can use this branch [permission-control](https://github.com/PanJiaChen/vueAdmin-template/tree/permission-control)
+## 发布
 
-## Related Project
- [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
+```bash
+# 构建正式环境
+npm run build
 
- [electron-vue-admin](https://github.com/PanJiaChen/electron-vue-admin)
+```
+## 功能
 
+```
+- 登录 / 注销
 
-## License
-[MIT](https://github.com/PanJiaChen/vueAdmin-template/blob/master/LICENSE) license.
+- 权限验证
+  - 页面权限
 
-Copyright (c) 2017-present PanJiaChen
+- 全局功能
+  - 国际化多语言
+  - 动态侧边栏（支持多级路由嵌套）
+  - 动态面包屑
+  - 快捷导航(标签页)
+  - Screenfull全屏
+  - 自适应收缩侧边栏
+
+- 完成功能
+  - 登录注册的权限认证
+  - 动态路由侧边栏
+  - 图片上传
+  - 展示数据
+  - 基础数据管理
+
+```
+
+Copyright (c) 2017

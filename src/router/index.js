@@ -51,7 +51,9 @@ export const asyncRouterMap = [
     path: '/blog',
     component: Layout,
     redirect: '/blog/list',
-    meta: { title: 'blog', icon: 'example' },
+    meta: { title: 'blog', icon: 'example',
+      roles: ['normal', 'admin', 'edit']
+    },
     children: [
       {
         path: 'list',
@@ -60,7 +62,7 @@ export const asyncRouterMap = [
         meta: {
           title: 'blogList',
           icon: 'form',
-          roles: ['normal', 'admin', 'editor']
+          roles: ['normal', 'admin', 'edit']
         }
       },
       {
@@ -70,7 +72,7 @@ export const asyncRouterMap = [
         meta: {
           title: 'blogAdd',
           icon: 'form',
-          roles: ['normal', 'admin', 'editor']
+          roles: ['normal', 'admin', 'edit']
         }
       }
     ]
@@ -79,7 +81,10 @@ export const asyncRouterMap = [
     path: '/portfolio',
     component: Layout,
     redirect: '/portfolio/list',
-    meta: { title: 'portfolio', icon: 'example' },
+    meta: { title: 'portfolio', icon: 'example',
+      roles: ['normal', 'admin', 'edit']
+    },
+
     children: [
       {
         path: 'list',
@@ -88,7 +93,7 @@ export const asyncRouterMap = [
         meta: {
           title: 'portfolioList',
           icon: 'form',
-          roles: ['normal', 'admin', 'editor']
+          roles: ['normal', 'admin', 'edit']
         }
       },
       {
@@ -98,7 +103,7 @@ export const asyncRouterMap = [
         meta: {
           title: 'portfolioEdit',
           icon: 'form',
-          roles: ['normal', 'admin', 'editor']
+          roles: ['normal', 'admin', 'edit']
         }
       }
     ]
@@ -107,7 +112,9 @@ export const asyncRouterMap = [
     path: '/account',
     component: Layout,
     redirect: '/account/list',
-    meta: { title: 'account', icon: 'example' },
+    meta: { title: 'account', icon: 'example',
+      roles: ['admin', 'edit']
+    },
     children: [
       {
         path: 'list',
@@ -116,7 +123,7 @@ export const asyncRouterMap = [
         meta: {
           title: 'accountList',
           icon: 'form',
-          roles: ['normal', 'admin', 'editor']
+          roles: ['admin', 'edit']
         }
       },
       {
@@ -126,7 +133,7 @@ export const asyncRouterMap = [
         meta: {
           title: 'accountAdd',
           icon: 'form',
-          roles: ['normal', 'admin', 'editor']
+          roles: ['admin']
         }
       }
     ]
@@ -134,7 +141,9 @@ export const asyncRouterMap = [
   {
     path: '/downLoad',
     component: Layout,
-    meta: { title: 'downMessage', icon: 'example' },
+    meta: { title: 'downMessage', icon: 'example',
+      roles: ['admin', 'edit']
+    },
     children: [
       {
         path: 'list',
@@ -143,7 +152,7 @@ export const asyncRouterMap = [
         meta: {
           title: 'downList',
           icon: 'form',
-          roles: ['normal', 'admin', 'editor']
+          roles: ['admin', 'edit']
         }
       },
       {
@@ -153,7 +162,7 @@ export const asyncRouterMap = [
         meta: {
           title: 'downEdit',
           icon: 'form',
-          roles: ['normal', 'admin', 'editor']
+          roles: ['admin', 'edit']
         }
       }
     ]
@@ -161,7 +170,10 @@ export const asyncRouterMap = [
   {
     path: '/notice',
     component: Layout,
-    meta: { title: 'noticeMessage', icon: 'example' },
+    meta: { title: 'noticeMessage', icon: 'example',
+      roles: ['admin', 'edit']
+    },
+
     children: [
       {
         path: 'list',
@@ -170,7 +182,7 @@ export const asyncRouterMap = [
         meta: {
           title: 'noticeList',
           icon: 'form',
-          roles: ['normal', 'admin', 'editor']
+          roles: ['admin', 'edit']
         }
       },
       {
@@ -180,7 +192,7 @@ export const asyncRouterMap = [
         meta: {
           title: 'noticeEdit',
           icon: 'form',
-          roles: ['normal', 'admin', 'editor']
+          roles: ['admin', 'edit']
         }
       }
     ]
@@ -197,7 +209,7 @@ export const asyncRouterMap = [
   //       meta: {
   //         title: 'carousel',
   //         icon: 'form',
-  //         roles: ['normal', 'admin', 'editor']
+  //         roles: ['normal', 'admin', 'edit']
   //       }
   //     }
   //   ]

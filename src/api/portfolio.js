@@ -15,7 +15,8 @@ export function addPortfolio(user, token, form) {
       content: form.content,
       links: form.links,
       technology: form.technology,
-      testimonial: form.Testimonial
+      testimonial: form.Testimonial,
+      isOpen: form.isOpen
     }
   })
 }

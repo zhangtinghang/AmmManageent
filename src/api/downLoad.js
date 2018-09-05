@@ -7,16 +7,16 @@ export function getList(id, preNum, nextNum, limit, token) {
   })
 }
 
-export function addDownload(user, token, dataObj){
-    return request({
-        url: '/encrypt/addDown',
-        method: 'post',
-        data: {
-          user,
-          token,
-          dataObj
-        }
-      })
+export function addDownload(user, token, dataObj) {
+  return request({
+    url: '/encrypt/addDown',
+    method: 'post',
+    data: {
+      user,
+      token,
+      dataObj
+    }
+  })
 }
 
 export function changeStatus(user, token, _id, status) {
@@ -44,14 +44,14 @@ export function delDownload(user, token, _id) {
   })
 }
 
-export function modDownload(user, token, dataObj){
+export function modDownload(user, token, dataObj) {
   return request({
-      url: '/encrypt/updDown',
-      method: 'post',
-      data: {
-        user,
-        token,
-        dataObj
-      }
-    })
+    url: '/encrypt/updDown',
+    method: 'post',
+    data: {
+      user,
+      token,
+      dataObj
+    }
+  })
 }

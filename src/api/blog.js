@@ -17,7 +17,8 @@ export function addBlog(user, token, form) {
       title: form.title,
       intro: form.intro,
       category: form.category,
-      blog: form.blog
+      blog: form.blog,
+      isOpen: form.isOpen
     }
   })
 }

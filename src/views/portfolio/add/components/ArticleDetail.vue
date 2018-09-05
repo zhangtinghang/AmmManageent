@@ -22,6 +22,7 @@
                       <el-option label="python / python开发" value="2"></el-option>
                       <el-option label="games / 游戏开发" value="3"></el-option>
                       <el-option label="UI / UI设计" value="4"></el-option>
+                      <el-option label="Other / 其他" value="5"></el-option>
                     </el-select>
                   </el-form-item>
               </el-col>
@@ -60,6 +61,15 @@
           </el-tooltip>
             <el-input placeholder="特别鸣谢链接" style='width:400px;' v-model="postForm.Testimonial_url"></el-input>
         </el-form-item>
+        <el-form-item style="margin-bottom: 40px;" label-width="80px" prop="isOpen" label="是否公开:">
+          <el-switch
+            v-model="postForm.isOpen"
+            active-text="公开"
+            inactive-text="私密">
+          </el-switch>
+        </el-form-item>
+        
+
         <el-form-item style="margin-bottom: 40px;" label-width="80px" label="封面:">
           <el-upload
             class="upload"
@@ -135,7 +145,8 @@ const defaultForm = {
   links_name: '', // 文章外链
   links_url:'',
   Testimonial_name: '',//链接名
-  Testimonial_url: ''
+  Testimonial_url: '',
+  isOpen: false
 }
 
 export default {

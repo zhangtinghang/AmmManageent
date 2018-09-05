@@ -17,10 +17,26 @@
       <el-form-item label="活动内容" prop="content">
         <el-input type="textarea" v-model="form.content"></el-input>
       </el-form-item>
-  
+
+      <el-form-item label="下载类型" prop="category">
+        <el-select v-model="form.category" placeholder="请选择类别">
+          <el-option label="android / 安卓" value="0"></el-option>
+          <el-option label="web / 前端开发" value="1"></el-option>
+          <el-option label="python / python开发" value="2"></el-option>
+          <el-option label="games / 游戏开发" value="3"></el-option>
+          <el-option label="UI / UI设计" value="4"></el-option>
+          <el-option label="Other / 其他" value="5"></el-option>
+        </el-select>
+      </el-form-item>
+
+      <el-form-item label-width="80px" prop="isOpen" label="发布类型:">
+        <el-switch v-model="form.isOpen" active-text="公开" inactive-text="私密">
+        </el-switch>
+      </el-form-item>
       <el-form-item label="现在发布" prop="status">
         <el-switch v-model="form.status"></el-switch>
       </el-form-item>
+  
       <!-- <el-button @click="addDomain">新增下载信息</el-button> -->
       <div class="links">
         <el-form-item class="link-title" label="下载标题" prop="linkName">
@@ -28,11 +44,7 @@
         </el-form-item>
         <el-form-item label="下载链接" prop="links">
           <el-select v-model="form.links" placeholder="下载链接">
-            <el-option
-              v-for="item in linkArray"
-              :key="item.name"
-              :label="item.name"
-              :value="item.url">
+            <el-option v-for="item in linkArray" :key="item.name" :label="item.name" :value="item.url">
             </el-option>
           </el-select>
         </el-form-item>
@@ -57,8 +69,10 @@
 </template>
 
 <script>
-import store from '@/store'
-import { addDownload } from '@/api/downLoad'
+  import store from '@/store'
+  import {
+    addDownload
+  } from '@/api/downLoad'
   export default {
     data() {
       return {
@@ -70,44 +84,46 @@ import { addDownload } from '@/api/downLoad'
           status: 0,
           linkName: '',
           links: '',
-          desc: ''
+          desc: '',
+          isOpen: '',
+          category:''
         },
         upLoadImgSrc: this.GLOBAL.upImgSrc + '/public/upload',
-        linkArray:[]
+        linkArray: []
       }
     },
     methods: {
       onSubmit() {
         let userId = store.getters.user;
         let token = store.getters.token;
-        if(this.form && this.form.status == true){
+        if (this.form && this.form.status == true) {
           this.form.status = 0
-        }else{
+        } else {
           this.form.status = 1
         }
-        addDownload(userId,token,this.form).then(response => {
+        addDownload(userId, token, this.form).then(response => {
           const data = response;
-          if(data.success == true){
-          this.$message({
+          if (data.success == true) {
+            this.$message({
               message: '提交下载信息成功！',
               type: 'success'
             });
             try {
-                this.$refs['form'].resetFields();
-                this.form.startTime = '';
-                this.form.endTime = '';
+              this.$refs['form'].resetFields();
+              this.form.startTime = '';
+              this.form.endTime = '';
             } catch (e) {}
           }
         }).catch(err => {
           console.log(err)
         })
       },
-      resetForm( formName ){
-          this.$refs['form'].resetFields();
-          this.$refs.upload.clearFiles();
-          this.form.startTime = '';
-          this.form.endTime = '';
-          // this.form
+      resetForm(formName) {
+        this.$refs['form'].resetFields();
+        this.$refs.upload.clearFiles();
+        this.form.startTime = '';
+        this.form.endTime = '';
+        // this.form
       },
       removeUpload(file) {
         this.$refs.upload.clearFiles();
@@ -117,24 +133,24 @@ import { addDownload } from '@/api/downLoad'
       },
       //上传文件成功
       imagesUpSuccsee(response, file, fileList) {
-        if(response.success == true){
+        if (response.success == true) {
           this.$notify({
-              title: '成功',
-              message: '文件上传成功',
-              type: 'success',
-              duration: 2000
-            })
+            title: '成功',
+            message: '文件上传成功',
+            type: 'success',
+            duration: 2000
+          })
           this.linkArray.push(response.data);
         }
       },
-      addDomain(){
+      addDomain() {
         this.form.links.push({
           url: '',
-          name:'',
+          name: '',
           key: Date.now()
         });
       },
-      removeDomain(item){
+      removeDomain(item) {
         var index = this.form.links.indexOf(item)
         if (index !== -1) {
           this.form.links.splice(index, 1)
@@ -164,10 +180,12 @@ import { addDownload } from '@/api/downLoad'
   .line {
     text-align: center;
   }
-  .links{
+  
+  .links {
     display: flex;
   }
-  .link-title{
+  
+  .link-title {
     width: 50%;
   }
 </style>

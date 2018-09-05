@@ -9,7 +9,7 @@ function hasPermission(roles, route) {
   if (route.meta && route.meta.roles) {
     return roles.some(role => route.meta.roles.indexOf(role) >= 0)
   } else {
-    return true
+    return false
   }
 }
 
@@ -44,7 +44,6 @@ const permission = {
   },
   actions: {
     GenerateRoutes({ commit }, data) {
-      console.log('传递进来的', data)
       return new Promise(resolve => {
         const { roles } = data
         let accessedRouters

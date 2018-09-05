@@ -14,9 +14,19 @@
            <el-option label="python / python开发" value="2"></el-option>
           <el-option label="games / 游戏开发" value="3"></el-option>
            <el-option label="UI / UI设计" value="4"></el-option>
+           <el-option label="Other / 其他" value="5"></el-option>
         </el-select>
+      </el-form-item>
 
-        <el-button type="primary" @click="onSubmit">创建</el-button>
+      <el-form-item label="发布类型" prop="isOpen">
+        <el-switch
+          v-model="form.isOpen"
+          active-text="公开"
+          inactive-text="私密">
+        </el-switch>
+
+        <el-button type="primary" style="margin-left:5%" @click="onSubmit">创建</el-button>
+        
       </el-form-item>
       <!-- 富文本转义问题，暂时用markdown代替，后期可两者交给用户选择 -->
       <!-- <div class="components-container">
@@ -50,7 +60,8 @@ const content = `
 const defaultForm = {
   title: '',
   intro: '',
-  category: ''
+  category: '',
+  isOpen: false
 }
 export default {
   components: { Tinymce, MarkdownEditor },
@@ -78,7 +89,6 @@ export default {
         formData.blog = this.html;
         let userId = store.getters.user;
         let token = store.getters.token;
-        console.log('将要传递的个人信息',userId, token)
         addBlog(userId,token,formData).then(response => {
           const data = response;
           console.log(response)

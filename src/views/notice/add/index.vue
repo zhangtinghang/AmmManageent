@@ -18,9 +18,27 @@
         <el-input class="textarea-inner" type="textarea" v-model="form.content"></el-input>
       </el-form-item>
   
+      <el-form-item label="公告类型" prop="category">
+        <el-select v-model="form.category" placeholder="请选择类别">
+          <el-option label="android / 安卓" value="0"></el-option>
+          <el-option label="web / 前端开发" value="1"></el-option>
+          <el-option label="python / python开发" value="2"></el-option>
+          <el-option label="games / 游戏开发" value="3"></el-option>
+          <el-option label="UI / UI设计" value="4"></el-option>
+          <el-option label="Other / 其他" value="5"></el-option>
+        </el-select>
+      </el-form-item>
+  
+      <el-form-item label="发布类型" prop="status">
+        <el-switch v-model="form.isOpen" active-text="公开" inactive-text="私密">
+         
+        </el-switch>
+      </el-form-item>
+
       <el-form-item label="现在发布" prop="status">
         <el-switch v-model="form.status"></el-switch>
       </el-form-item>
+
       <el-form-item>
         <el-button type="primary" @click="onSubmit">立即创建</el-button>
         <el-button @click="resetForm">取消</el-button>
@@ -30,8 +48,10 @@
 </template>
 
 <script>
-import store from '@/store'
-import { addNotice } from '@/api/notice'
+  import store from '@/store'
+  import {
+    addNotice
+  } from '@/api/notice'
   export default {
     data() {
       return {
@@ -40,7 +60,9 @@ import { addNotice } from '@/api/notice'
           startTime: '',
           endTime: '',
           content: '',
-          status: 1
+          status: 1,
+          isOpen: false,
+          category:''
         },
         upLoadImgSrc: this.GLOBAL.upImgSrc + '/public/upload'
       }
@@ -49,33 +71,33 @@ import { addNotice } from '@/api/notice'
       onSubmit() {
         let userId = store.getters.user;
         let token = store.getters.token;
-        if(this.form && this.form.status == true){
+        if (this.form && this.form.status == true) {
           this.form.status = 0
         } else {
           this.form.status = 1
         }
-        addNotice(userId,token,this.form).then(response => {
+        addNotice(userId, token, this.form).then(response => {
           const data = response;
-          if(data.success == true && data.errno == 0){
-          this.$message({
+          if (data.success == true && data.errno == 0) {
+            this.$message({
               message: '发布公告成功！',
               type: 'success'
             });
             try {
-                this.$refs['form'].resetFields();
-                this.form.startTime = '';
-                this.form.endTime = '';
+              this.$refs['form'].resetFields();
+              this.form.startTime = '';
+              this.form.endTime = '';
             } catch (e) {}
           }
         }).catch(err => {
           console.log(err)
         })
       },
-      resetForm(){
-          this.$refs['form'].resetFields();
-          this.form.startTime = '';
-          this.form.endTime = '';
-          // this.form
+      resetForm() {
+        this.$refs['form'].resetFields();
+        this.form.startTime = '';
+        this.form.endTime = '';
+        // this.form
       },
       submitUpload() {
         this.$refs.upload.submit();
@@ -104,7 +126,8 @@ import { addNotice } from '@/api/notice'
   .line {
     text-align: center;
   }
-  .textarea-inner > textarea{
+  
+  .textarea-inner>textarea {
     min-height: 300px !important;
   }
 </style>

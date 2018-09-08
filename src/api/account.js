@@ -14,7 +14,6 @@ export function changeStatus(user, token, _id, status) {
 }
 
 export function updateAccount(user, token, _id, dataObj) {
-  console.log('jaingad====', dataObj)
   return request({
     url: '/encrypt/updateAccount',
     method: 'post',

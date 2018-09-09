@@ -45,3 +45,14 @@ export function getUserList(id, preNum, nextNum, limit, token) {
     params: { id, preNum, nextNum, limit, token }
   })
 }
+
+export function bulkRegister(token, bulkData) {
+  return request({
+    url: '/encrypt/bulkRegister',
+    method: 'post',
+    data: {
+      token,
+      bulkData
+    }
+  })
+}

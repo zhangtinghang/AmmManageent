@@ -121,8 +121,10 @@ export default {
 .editor-content{
   margin-top: 20px;
 }
-/* .simplemde-container{
+.simplemde-container{
   overflow: auto;
-} */
+  min-height: 300px;
+  height: auto;
+}
 </style>
 

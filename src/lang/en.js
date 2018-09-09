@@ -10,6 +10,7 @@ export default {
     account: 'Account',
     accountList: 'Account List',
     accountAdd: 'Account Add',
+    accountUpload: 'Account Upload',
     downMessage: 'Download',
     downList: 'Down List',
     downEdit: 'Down Add',

@@ -36,7 +36,7 @@ export const constantRouterMap = [
       path: 'dashboard',
       component: _import('dashboard/index'),
       name: 'dashboard',
-      meta: { title: 'dashboard', icon: 'form' }
+      meta: { title: 'dashboard', icon: 'dashboard' }
     }]
   }
 ]
@@ -51,7 +51,7 @@ export const asyncRouterMap = [
     path: '/blog',
     component: Layout,
     redirect: '/blog/list',
-    meta: { title: 'blog', icon: 'example',
+    meta: { title: 'blog', icon: 'form',
       roles: ['normal', 'admin', 'edit']
     },
     children: [
@@ -61,7 +61,7 @@ export const asyncRouterMap = [
         component: _import('blog/list/index'),
         meta: {
           title: 'blogList',
-          icon: 'form',
+          icon: 'list',
           roles: ['normal', 'admin', 'edit']
         }
       },
@@ -71,7 +71,7 @@ export const asyncRouterMap = [
         component: _import('blog/add/index'),
         meta: {
           title: 'blogAdd',
-          icon: 'form',
+          icon: 'edit',
           roles: ['normal', 'admin', 'edit']
         }
       }
@@ -81,7 +81,7 @@ export const asyncRouterMap = [
     path: '/portfolio',
     component: Layout,
     redirect: '/portfolio/list',
-    meta: { title: 'portfolio', icon: 'example',
+    meta: { title: 'portfolio', icon: 'component',
       roles: ['normal', 'admin', 'edit']
     },
 
@@ -92,7 +92,7 @@ export const asyncRouterMap = [
         component: _import('portfolio/list/index'),
         meta: {
           title: 'portfolioList',
-          icon: 'form',
+          icon: 'list',
           roles: ['normal', 'admin', 'edit']
         }
       },
@@ -102,7 +102,7 @@ export const asyncRouterMap = [
         component: _import('portfolio/add/create'),
         meta: {
           title: 'portfolioEdit',
-          icon: 'form',
+          icon: 'edit',
           roles: ['normal', 'admin', 'edit']
         }
       }
@@ -112,7 +112,7 @@ export const asyncRouterMap = [
     path: '/account',
     component: Layout,
     redirect: '/account/list',
-    meta: { title: 'account', icon: 'example',
+    meta: { title: 'account', icon: 'people',
       roles: ['admin', 'edit']
     },
     children: [
@@ -122,7 +122,7 @@ export const asyncRouterMap = [
         component: _import('account/list/index'),
         meta: {
           title: 'accountList',
-          icon: 'form',
+          icon: 'list',
           roles: ['admin', 'edit']
         }
       },
@@ -132,8 +132,18 @@ export const asyncRouterMap = [
         component: _import('account/add/index'),
         meta: {
           title: 'accountAdd',
-          icon: 'form',
+          icon: 'edit',
           roles: ['admin']
+        }
+      },
+      {
+        path: 'upload',
+        name: 'accountupload',
+        component: _import('account/upload/index'),
+        meta: {
+          title: 'accountUpload',
+          icon: 'nested',
+          roles: ['admin', 'edit']
         }
       }
     ]
@@ -141,7 +151,7 @@ export const asyncRouterMap = [
   {
     path: '/downLoad',
     component: Layout,
-    meta: { title: 'downMessage', icon: 'example',
+    meta: { title: 'downMessage', icon: 'guide',
       roles: ['admin', 'edit']
     },
     children: [
@@ -151,7 +161,7 @@ export const asyncRouterMap = [
         component: _import('downLoad/list/index'),
         meta: {
           title: 'downList',
-          icon: 'form',
+          icon: 'list',
           roles: ['admin', 'edit']
         }
       },
@@ -161,7 +171,7 @@ export const asyncRouterMap = [
         component: _import('downLoad/add/index'),
         meta: {
           title: 'downEdit',
-          icon: 'form',
+          icon: 'edit',
           roles: ['admin', 'edit']
         }
       }
@@ -170,7 +180,7 @@ export const asyncRouterMap = [
   {
     path: '/notice',
     component: Layout,
-    meta: { title: 'noticeMessage', icon: 'example',
+    meta: { title: 'noticeMessage', icon: 'tab',
       roles: ['admin', 'edit']
     },
 
@@ -181,7 +191,7 @@ export const asyncRouterMap = [
         component: _import('notice/list/index'),
         meta: {
           title: 'noticeList',
-          icon: 'form',
+          icon: 'list',
           roles: ['admin', 'edit']
         }
       },
@@ -191,7 +201,7 @@ export const asyncRouterMap = [
         component: _import('notice/add/index'),
         meta: {
           title: 'noticeEdit',
-          icon: 'form',
+          icon: 'edit',
           roles: ['admin', 'edit']
         }
       }

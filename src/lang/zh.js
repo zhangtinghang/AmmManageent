@@ -10,6 +10,7 @@ export default {
     account: '账号信息',
     accountList: '账号列表',
     accountAdd: '新增账号',
+    accountUpload: '批量导入',
     downMessage: '下载信息',
     downList: '下载列表',
     downEdit: '新增下载',

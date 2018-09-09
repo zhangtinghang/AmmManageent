@@ -128,11 +128,9 @@ import { addPortfolio } from '@/api/portfolio'
 import store from '@/store'
 const content = `
 **this is test**
-
 * vue
 * element
 * webpack
-
 ## Simplemde
 `
 const defaultForm = {
@@ -371,6 +369,12 @@ export default {
     width: 178px;
     height: 178px;
     display: block;
+  }
+
+  .simplemde-container{
+    overflow: auto;
+    min-height: 300px;
+    height: auto;
   }
 </style>
 

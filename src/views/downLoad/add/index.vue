@@ -88,7 +88,7 @@
           isOpen: '',
           category:''
         },
-        upLoadImgSrc: this.GLOBAL.upImgSrc + '/public/upload',
+        upLoadImgSrc: process.env.BASE_API + '/public/upload',
         linkArray: []
       }
     },

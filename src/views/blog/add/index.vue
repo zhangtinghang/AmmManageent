@@ -36,7 +36,7 @@
         <div class="editor-content" v-html="content"></div>
       </div> -->
       <div class="editor-container">
-        <markdown-editor id="contentEditor" ref="contentEditor" v-model="content" :height="300" :zIndex="20"></markdown-editor>
+        <markdown-editor id="contentEditor" ref="contentEditor" v-model="content"  :zIndex="20"></markdown-editor>
       </div>
     </el-form>
   </div>
@@ -118,13 +118,9 @@ export default {
 .line{
   text-align: center;
 }
+
 .editor-content{
   margin-top: 20px;
-}
-.simplemde-container{
-  overflow: auto;
-  min-height: 300px;
-  height: auto;
 }
 </style>
 

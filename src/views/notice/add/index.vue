@@ -30,9 +30,7 @@
       </el-form-item>
   
       <el-form-item label="发布类型" prop="status">
-        <el-switch v-model="form.isOpen" active-text="公开" inactive-text="私密">
-         
-        </el-switch>
+        <el-switch v-model="form.isOpen" active-text="公开" inactive-text="私密"></el-switch>
       </el-form-item>
 
       <el-form-item label="现在发布" prop="status">
@@ -63,8 +61,7 @@
           status: 1,
           isOpen: false,
           category:''
-        },
-        upLoadImgSrc: this.GLOBAL.upImgSrc + '/public/upload'
+        }
       }
     },
     methods: {

@@ -1,5 +1,5 @@
 <template>
-  <div class="simplemde-container" :style="{height:height+'px',zIndex:zIndex}">
+  <div class="simplemde-container" :style="{'min-height':height+'px', zIndex:zIndex}">
     <textarea :id="id">
     </textarea>
   </div>
@@ -27,7 +27,7 @@ export default {
     },
     height: {
       type: Number,
-      default: 150
+      default: 300
     },
     zIndex: {
       type: Number,

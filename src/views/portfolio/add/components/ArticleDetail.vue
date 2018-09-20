@@ -6,7 +6,7 @@
         <el-row>
           <el-col :span="21">
             <el-form-item style="margin-bottom: 40px;" prop="title">
-              <MDinput name="name" v-model="postForm.title" required :maxlength="100">
+              <MDinput name="title" v-model="postForm.title" required :maxlength="100">
                 标题
               </MDinput>
               <span v-show="postForm.title.length>=26" class='title-prompt'>app可能会显示不全</span>
@@ -17,10 +17,10 @@
                 <el-col :span="8">
                   <el-form-item prop="category" label-width="80px" label="博文类别:" class="postInfo-container-item">
                     <el-select v-model="postForm.category" placeholder="请选择类别">
-                      <el-option label="android / 安卓" value="0"></el-option>
-                      <el-option label="web / 前端开发" value="1"></el-option>
-                      <el-option label="python / python开发" value="2"></el-option>
-                      <el-option label="games / 游戏开发" value="3"></el-option>
+                      <el-option label="Android / 安卓开发" value="0"></el-option>
+                      <el-option label="Web / 前端开发" value="1"></el-option>
+                      <el-option label="Python / python开发" value="2"></el-option>
+                      <el-option label="Games / 游戏开发" value="3"></el-option>
                       <el-option label="UI / UI设计" value="4"></el-option>
                       <el-option label="Other / 其他" value="5"></el-option>
                     </el-select>
@@ -106,8 +106,8 @@
         <el-button @click="markdown2Html" style="margin-top:0;" type="primary" icon="el-icon-document">To HTML</el-button>
         <div v-html="html"></div>
         <!-- markdown -->
-        <div class="editor-container" style="min-height:300px">
-          <markdown-editor id="contentEditor" ref="contentEditor" v-model="content" :height="300" :zIndex="20"></markdown-editor>
+        <div class="editor-container">
+          <markdown-editor id="contentEditor" ref="contentEditor" v-model="content" :zIndex="20"></markdown-editor>
         </div>
       </div>
     </el-form>
@@ -173,8 +173,7 @@ export default {
       fetchSuccess: true,
       loading: false,
       rules: {
-        image_uri: [{ validator: validateRequire }],
-        title: [{ validator: validateRequire }],
+        // title: [{ validator: validateRequire}],//此处有BUG 暂时注销掉处理
         content: [{ validator: validateRequire }]
       },
       html:'',
@@ -183,7 +182,7 @@ export default {
       dialogImageUrl: '',
       dialogVisible: false,
       cover:'',
-      upLoadImgSrc: this.GLOBAL.upImgSrc + '/public/portfolio/upCover'
+      upLoadImgSrc: process.env.BASE_API + '/public/portfolio/upCover'
     }
   },
   created() {
@@ -371,10 +370,10 @@ export default {
     display: block;
   }
 
-  .simplemde-container{
-    overflow: auto;
-    min-height: 300px;
-    height: auto;
-  }
+  // .simplemde-container{
+  //   overflow: auto;
+  //   min-height: 300px;
+  //   height: auto;
+  // }
 </style>
 

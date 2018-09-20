@@ -18,10 +18,6 @@ import './permission' // permission control
 
 import * as filters from './filters' // global filters
 
-import global_ from './Global'
-
-Vue.prototype.GLOBAL = global_ // 挂载到全局变量
-
 Vue.use(Element, {
   size: 'medium', // set element-ui default size
   i18n: (key, value) => i18n.t(key, value)

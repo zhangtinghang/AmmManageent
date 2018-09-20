@@ -30,7 +30,7 @@ export function logout(user, token) {
   })
 }
 
-export function register(username, number, password, operator) {
+export function register(username, number, password, operator, type) {
   return request({
     url: '/public/register',
     method: 'post',
@@ -38,7 +38,8 @@ export function register(username, number, password, operator) {
       username,
       number,
       password,
-      operator
+      operator,
+      type
     }
   })
 }

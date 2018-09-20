@@ -12,10 +12,21 @@
   <el-form-item label="确认密码" prop="checkPass">
     <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off"></el-input>
   </el-form-item>
+  <el-form-item label="所属部门" prop="type">
+    <el-select v-model="ruleForm2.type" placeholder="请选择">
+      <el-option
+        v-for="item in options"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value">
+      </el-option>
+    </el-select>
+  </el-form-item>
   <el-form-item>
     <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
     <el-button @click="resetForm('ruleForm2')">重置</el-button>
   </el-form-item>
+
 </el-form>   
 </template>
 
@@ -58,7 +69,8 @@
           number: '',
           username: '',
           password: '',
-          checkPass:''
+          checkPass:'',
+          type:''
         },
         rules2: {
           password: [
@@ -73,37 +85,52 @@
           username: [
              { validator: validateName, trigger: 'blur' }
           ]
-        }
+        },
+         options: [{
+          value: 0,
+          label: 'Android / 安卓开发'
+        }, {
+          value: 1,
+          label: 'Web / 前端开发'
+        }, {
+          value: 2,
+          label: 'Python / python开发'
+        }, {
+          value: 3,
+          label: 'Games / 游戏开发'
+        }, {
+          value: 4,
+          label: 'UI / UI设计'
+        }, {
+          value: 5,
+          label: 'Other / 其他'
+        }],
       };
     },
     methods: {
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {           
+      submitForm() {
             let user = store.getters.user;
-            register(this.ruleForm2.username, this.ruleForm2.number, this.ruleForm2.password, user).then(response => {
-              this.$notify({
-                title: '成功',
-                message: '添加用户成功',
-                type: 'success',
-                duration: 2000
-              })
-              try {
-                this.$refs['ruleForm2'].resetFields();
-              } catch (e) {
-
-              }
+            register(this.ruleForm2.username, this.ruleForm2.number, this.ruleForm2.password, user, this.ruleForm2.type).then(response => {
+              if(response.success){
+                this.$notify({
+                  title: '成功',
+                  message: '添加用户成功',
+                  type: 'success',
+                  duration: 2000
+                })
+                try {
+                  this.$refs['ruleForm2'].resetFields();
+                } catch (e) {}
+              }else{
+                  this.$notify({
+                    title: '失败',
+                    message: '请正确填写！',
+                    type: 'error',
+                    duration: 2000
+                  })
+                  return false;
+              }  
             })
-          } else {
-            this.$notify({
-              title: '失败',
-              message: '请正确填写！',
-              type: 'error',
-              duration: 2000
-            })
-            return false;
-          }
-        });
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();

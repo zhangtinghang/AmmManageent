@@ -68,7 +68,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       template: 'index.html',
       inject: true,
       favicon: resolve('favicon.ico'),
-      title: 'vue-element-admin',
+      title: '移动创新俱乐部',
       minify: {
         removeComments: true,
         collapseWhitespace: true,

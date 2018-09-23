@@ -21,7 +21,7 @@
     <el-table-column
       align="center" width="150" label="发布者">
         <template slot-scope="scope">
-            <el-tag type="success">{{scope.row.user.username}}</el-tag>
+            <el-tag type="success">{{scope.row.user && scope.row.user.username || '未知'}}</el-tag>
         </template>
     </el-table-column>
 

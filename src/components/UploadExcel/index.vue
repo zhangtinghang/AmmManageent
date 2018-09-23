@@ -130,6 +130,7 @@ export default {
     uploadServer(){
       //发送请求至服务器
       let token = store.getters.token;
+      console.log('这是将要上传的数据',this.excelData.results)
       bulkRegister(token, this.excelData.results).then(response => {
         this.excelData.results = [];
         const data = response;
